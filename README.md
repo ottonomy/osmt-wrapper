@@ -15,6 +15,7 @@ This approach results in a basic "droplet" running OSMT, and Redis, with an Ngin
 7. Fill out environment settings. `cp osmt-prod.env.example osmt-prod.env` and customize with your Domain, MySQL DB and Elasticsearch information. Copy white label configuration `cp ./whitelabel/whitelabel.example.json ./whitelabel/whitelabel.json` and customize with strings describing your service.
 8. Sync osmt-wrapper to production droplet​: execute `./bin/sync.sh` to copy contents of this directory to `/opt/osmt-wrapper`
 9. Start service on production droplet. SSH to osmt1 (`ssh osmt1`), navigate to `/opt/osmt-wrapper` and execute `./bin/start.sh` to run the Docker Compose service.
+10. Add a [Firewall](https://cloud.digitalocean.com/networking/firewalls/new) to leave open only ports 443, 80 to traffic from anywhere. Restrict port 22 (SSH) to your IP address(es).
 
 ## Using the wrapper locally
 You may customize `osmt-dev.env` to run the stack locally in a similar fashion to the quickstart in the main OSMT repository, including the database and Elasticsearch locally using Docker Compose.
